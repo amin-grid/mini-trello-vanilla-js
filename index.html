@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Trello (Vanilla JS)</title>
+  <meta name="description" content="A small Trello-like Kanban board built with vanilla HTML/CSS/JS.">
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <h1 class="app-title">Mini Trello</h1>
+      <p class="app-subtitle">Vanilla HTML/CSS/JS • State-driven rendering • localStorage</p>
+    </div>
+  </header>
+
+  <main class="app">
+    <section class="composer" aria-label="Create a new card">
+      <form id="createForm" class="composer-form" autocomplete="off">
+        <label class="field">
+          <span class="label">Title</span>
+          <input
+            id="titleInput"
+            name="title"
+            type="text"
+            placeholder="e.g., Fix login bug"
+            maxlength="80"
+            required
+          >
+        </label>
+
+        <label class="field">
+          <span class="label"></span>
+          <textarea
+            id="descInput"
+            name="description"
+            placeholder="Add details..."
+            rows="2"
+            maxlength="300"
+          ></textarea>
+        </label>
+
+        <div class="composer-actions">
+          <button type="submit" class="btn btn-primary">Add card</button>
+          <button type="button" id="clearBtn" class="btn btn-ghost">Clear</button>
+        </div>
+
+        <p id="formError" class="form-error" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="board" aria-label="Kanban board">
+      <div class="column" data-column="todo" aria-label="Todo column">
+        <div class="column-header">
+          <h2 class="column-title">Todo</h2>
+          <span class="column-count" data-count="todo">0</span>
+        </div>
+        <div class="column-body" id="todoColumn" data-dropzone="todo"></div>
+      </div>
+
+      <div class="column" data-column="doing" aria-label="Doing column">
+        <div class="column-header">
+          <h2 class="column-title">Doing</h2>
+          <span class="column-count" data-count="doing">0</span>
+        </div>
+        <div class="column-body" id="doingColumn" data-dropzone="doing"></div>
+      </div>
+
+      <div class="column" data-column="done" aria-label="Done column">
+        <div class="column-header">
+          <h2 class="column-title">Done</h2>
+          <span class="column-count" data-count="done">0</span>
+        </div>
+        <div class="column-body" id="doneColumn" data-dropzone="done"></div>
+      </div>
+    </section>
+
+    <template id="cardTemplate">
+      <article class="card" data-card>
+        <header class="card-header">
+          <h3 class="card-title" data-card-title></h3>
+        </header>
+
+        <p class="card-desc" data-card-desc></p>
+
+        <footer class="card-actions" aria-label="Card actions">
+          <div class="card-actions-left">
+            <button class="btn btn-small" data-action="move-left" type="button" aria-label="Move left">
+              ←
+            </button>
+            <button class="btn btn-small" data-action="move-right" type="button" aria-label="Move right">
+              →
+            </button>
+          </div>
+
+          <div class="card-actions-right">
+            <button class="btn btn-small" data-action="edit" type="button" aria-label="Edit card">
+              Edit
+            </button>
+            <button class="btn btn-small btn-danger" data-action="delete" type="button" aria-label="Delete card">
+              Delete
+            </button>
+          </div>
+        </footer>
+      </article>
+    </template>
+
+    <noscript>
+      <p>This app requires JavaScript enabled.</p>
+    </noscript>
+  </main>
+
+  <footer class="app-footer">
+    <small>
+      Built with vanilla HTML/CSS/JS • <span id="storageStatus">localStorage</span>
+    </small>
+  </footer>
+
+  <script src="src/app.js" defer></script>
+</body>
+</html>
