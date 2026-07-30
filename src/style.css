@@ -1,0 +1,23 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --indigo-600: #6366f1;
+  --indigo-500: #8b5cf6;
+  --white: #fff;
+  --header-bg-start: var(--indigo-600);
+  --header-bg-end: var(--indigo-500);
+  --header-title: var(--white);
+}
+
+.app-header {
+  background: linear-gradient(
+    135deg,
+    var(--header-bg-start),
+    var(--header-bg-end)
+  );
+  color: var(--header-title);
+}
