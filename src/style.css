@@ -11,6 +11,8 @@
   --header-bg-start: var(--indigo-600);
   --header-bg-end: var(--indigo-500);
   --header-title: var(--white);
+  --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.12);
+  --border: #e5e7eb;
 }
 
 .app-header {
@@ -20,4 +22,21 @@
     var(--header-bg-end)
   );
   color: var(--header-title);
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  box-shadow: var(--shadow-lg);
+}
+
+.composer {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
 }
