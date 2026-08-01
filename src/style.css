@@ -36,7 +36,19 @@
   margin-top: 15px;
 }
 
+.composer-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
 .field {
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.composer-actions {
+  display: flex;
 }
