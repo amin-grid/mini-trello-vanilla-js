@@ -38,8 +38,8 @@
 
 .composer-form {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2px;
+  column-gap: clamp(0.75rem, 2vw, 1.25rem);
+  row-gap: clamp(0.5rem, 1.5vw, 1rem);
 }
 
 .field {
@@ -51,4 +51,25 @@
 
 .composer-actions {
   display: flex;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+
+.form-error {
+  width: 100%;
+}
+
+.form-error:empty {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .composer-form {
+    flex-direction: column;
+    gap: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .composer-actions {
+    justify-content: flex-end;
+  }
 }
