@@ -8,9 +8,13 @@
   --indigo-600: #6366f1;
   --indigo-500: #8b5cf6;
   --white: #fff;
+  --black: #000;
+  --ghost-white: #f3f4f6;
   --header-bg-start: var(--indigo-600);
   --header-bg-end: var(--indigo-500);
   --header-title: var(--white);
+  --input-bg: #f9fafb;
+  --label: #1f2937;
   --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.12);
   --border: #e5e7eb;
 }
@@ -34,6 +38,7 @@
   border-radius: 10px;
   padding: 5px;
   margin-top: 15px;
+  box-shadow: var(--shadow-lg);
 }
 
 .composer-form {
@@ -49,10 +54,55 @@
   min-width: 0;
 }
 
+.label {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 550;
+  color: var(--label);
+}
+
+.field input,
+.field textarea {
+  outline: none;
+  background: var(--input-bg);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  min-height: 40px;
+  padding: 0 8px;
+  transition: .2s;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border: 2px solid var(--indigo-500);
+}
+
+.field textarea {
+  resize: none;
+}
+
 .composer-actions {
   display: flex;
   gap: 5px;
   flex: 0 0 auto;
+}
+
+.btn-primary,
+.btn-ghost {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.btn-primary {
+  background: var(--indigo-600);
+  border: 2px solid var(--indigo-500);
+  color: var(--white);
+}
+
+.btn-ghost {
+  background: var(--ghost-white);
+  border: 2px solid var(--border);
+  color: var(--black);
 }
 
 .form-error {
