@@ -1,7 +1,10 @@
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+}
+
+body {
+  margin: 8px;
 }
 
 :root {
@@ -27,7 +30,6 @@
   );
   color: var(--header-title);
   border-radius: 10px;
-  margin: 5px;
   padding: 5px;
   box-shadow: var(--shadow-lg);
 }
@@ -37,7 +39,7 @@
   border: 2px solid var(--border);
   border-radius: 10px;
   padding: 5px;
-  margin-top: 15px;
+  margin: 15px 0;
   box-shadow: var(--shadow-lg);
 }
 
@@ -111,6 +113,38 @@
 
 .form-error:empty {
   display: none;
+}
+
+.board {
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+  gap: 10px;
+}
+
+.column {
+  border-radius: 5px;
+  border: 1px solid gray;
+  flex: 1 1 0;
+  overflow: hidden;
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.column-todo .column-header {
+  background-color: #eff6ff;
+}
+
+.column-doing .column-header {
+  background-color: #ffffe0;
+}
+
+.column-done .column-header {
+  background-color: #b6ecb6;
 }
 
 @media (max-width: 640px) {
