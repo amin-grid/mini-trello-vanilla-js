@@ -147,6 +147,24 @@ body {
   background-color: #b6ecb6;
 }
 
+.col-icon {
+  stroke: white;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.todo-icon {
+  background-color: blue;
+}
+
+.doing-icon {
+  background-color: yellow;
+}
+
+.done-icon {
+  background-color: green;
+}
+
 @media (max-width: 640px) {
   .composer-form {
     flex-direction: column;
