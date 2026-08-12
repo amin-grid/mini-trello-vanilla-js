@@ -4,7 +4,17 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 8px;
+  align-items: center;
+}
+
+.app-header,
+.app,
+.app-footer {
+  width: 70vw;
+  max-width: 960px;
 }
 
 :root {
@@ -173,5 +183,11 @@ body {
 
   .composer-actions {
     justify-content: flex-end;
+  }
+
+  .app-header,
+  .app,
+  .app-footer {
+    width: 100%;
   }
 }
