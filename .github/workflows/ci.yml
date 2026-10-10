@@ -1,0 +1,35 @@
+# GitHub Actions CI — runs the test suite automatically.
+# Docs: https://docs.github.com/actions
+name: CI
+
+# When to run: every push to any branch, and every pull request into main.
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Tests (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+
+    # The matrix runs this whole job once per Node version listed below.
+    strategy:
+      matrix:
+        node-version: [20, 22]
+
+    steps:
+      # 1. Check out this repository onto the runner.
+      - uses: actions/checkout@v4
+
+      # 2. Install the requested Node.js version.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm # caches ~/.npm so installs are fast
+
+      # 3. Install exactly what package-lock.json says (reproducible builds).
+      - run: npm ci
+
+      # 4. Run the same test command you run locally.
+      - run: npm test
