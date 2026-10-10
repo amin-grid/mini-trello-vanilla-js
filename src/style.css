@@ -8,6 +8,9 @@ body {
   flex-direction: column;
   margin: 8px;
   align-items: center;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--ghost-white);
+  color: var(--label);
 }
 
 .app-header,
@@ -119,6 +122,9 @@ body {
 
 .form-error {
   width: 100%;
+  color: #b91c1c;
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
 }
 
 .form-error:empty {
@@ -133,8 +139,11 @@ body {
 }
 
 .column {
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
-  border: 1px solid gray;
+  border: 1px solid var(--border);
+  background: var(--white);
   flex: 1 1 0;
   overflow: hidden;
 }
@@ -142,7 +151,175 @@ body {
 .column-header {
   display: flex;
   align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.column-title {
+  font-size: 1rem;
+  flex: 1;
+}
+
+.column-count {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.column-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  flex: 1 1 auto;
+  min-height: 0; /* lets this flex child scroll instead of stretching the column */
+  overflow-y: auto;
+}
+
+/* Friendly hint while a column has no cards. */
+.column-body:empty::after {
+  content: 'Drop cards here';
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 18px 8px;
+}
+
+/* ---- Cards ------------------------------------------------------------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  cursor: grab;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card-title {
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  color: #4b5563;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.card-desc:empty {
+  display: none;
+}
+
+.card-actions,
+.card-actions-left,
+.card-actions-right {
+  display: flex;
+  gap: 6px;
+}
+
+.card-actions {
   justify-content: space-between;
+}
+
+.btn {
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn-small {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: var(--ghost-white);
+}
+
+.btn-small:hover {
+  filter: brightness(0.97);
+}
+
+.btn-danger {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+/* ---- Inline edit form ---------------------------------------------------- */
+
+.card-editing {
+  cursor: default;
+  border-color: var(--indigo-500);
+}
+
+.card-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-edit-form input,
+.card-edit-form textarea {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 6px 8px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  outline: none;
+}
+
+.card-edit-form input:focus,
+.card-edit-form textarea:focus {
+  border-color: var(--indigo-500);
+}
+
+.card-edit-form textarea {
+  resize: none;
+}
+
+.card-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.card-edit-form .form-error {
+  margin-top: 0;
+}
+
+/* ---- Drag & drop ---------------------------------------------------------- */
+
+.dragging {
+  opacity: 0.4;
+}
+
+.column-body.drag-over {
+  background: rgba(99, 102, 241, 0.08);
+  outline: 2px dashed var(--indigo-500);
+  outline-offset: -6px;
+}
+
+.app-footer {
+  color: #6b7280;
+  text-align: center;
+  padding: 8px 0 16px;
 }
 
 .column-todo .column-header {
