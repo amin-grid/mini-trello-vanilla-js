@@ -16,14 +16,14 @@ jobs:
     # The matrix runs this whole job once per Node version listed below.
     strategy:
       matrix:
-        node-version: [20, 22]
+        node-version: [22, 24] # 22 = current LTS, 24 = current release
 
     steps:
       # 1. Check out this repository onto the runner.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # 2. Install the requested Node.js version.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm # caches ~/.npm so installs are fast
